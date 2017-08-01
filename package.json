@@ -1,0 +1,24 @@
+{
+  "name": "nassquaapinode",
+  "version": "1.0.0",
+  "description": "api nassqua with nodejs",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "MRHZ",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.4",
+    "crypto": "0.0.3",
+    "express": "^4.15.3",
+    "jwt-simple": "^0.5.1",
+    "moment": "^2.18.1",
+    "mongoose": "^4.11.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
