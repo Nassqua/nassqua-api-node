@@ -23,8 +23,13 @@ function setExperience(req,res){
   console.log('POST /api/Experiences')
   console.log(req.body)
   let experience = new Experience()
+
+  experience.expxeriencesid = req.body.expxeriencesid
   experience.name = req.body.name
   experience.description = req.body.description
+  experience.image = req.body.image
+  experience.price = req.body.price
+
   experience.save((err , experienceStored ) => {
     if(err) res.status(500).send( { message : `Error on DB saving : ${err}` })
     res.status(200).send( { experience : experienceStored } )

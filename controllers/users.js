@@ -7,10 +7,8 @@ const service = require('../services')
 
 function signUp(req,res){
 
-
   if(!req.body.email ||!req.body.displayNames || !req.body.password)
     return res.status(404).send( { message : 'Invalid SignUp data' } )
-
 
   const user = new User({
       email : req.body.email,
@@ -19,8 +17,7 @@ function signUp(req,res){
   })
 
   user.save((err) => {
-    if(err) return res.status(500).send( { message : 'Error on user create' } )
-
+    if(err) return res.status(500).send( { message : 'Error on user create' } )  
     res.status(200).send( { token : service.createToken(user) } )
   })
 
@@ -30,12 +27,17 @@ function signIn(req,res){
   const emailIn = req.body.email
   const emailPass = req.body.password
 
+  console.log('SignIn *************************');
+  console.log(req.body);
+
   if(!emailIn || !emailPass)
     return res.status(404).send( { message : 'Credenciales invalidas' })
 
   User.find({ email : emailIn } , (err , user) => {
     if(err) return res.status(500).send( { message :  err} )
-    if(!user || user.length == 0) return res.status(404).send( { message : 'invalid credentials , check user and password' } )
+    if(!user || user.length == 0){
+      return res.status(404).send( { message : 'invalid credentials , check user and password' } )
+    }
 
     const isMathc = user[0].validPassword(emailPass)// true
 

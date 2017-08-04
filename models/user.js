@@ -3,8 +3,15 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const bcrypt = require('bcrypt-nodejs')
 const crypto = require('crypto')
+const autoIncrement = require('mongoose-auto-increment');
+const config = require('../config');
+
+const connection = mongoose.createConnection(config.db);
+
+autoIncrement.initialize(connection);
 
 const UserSchema = new Schema({
+  user_id : { type : Number , unique : true },
   email : { type : String , unique : true , lowercase : true },
   displayName : String,
   avatar : String,
@@ -13,7 +20,8 @@ const UserSchema = new Schema({
   lastLogin : Date
 })
 
-
+UserSchema.plugin(autoIncrement.plugin, { model: 'User', field: 'user_id' , startAt: 1  });
+var User = connection.model('User', UserSchema);
 
 UserSchema.pre('save' , function (next) {
   let user = this
