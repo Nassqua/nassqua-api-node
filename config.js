@@ -1,6 +1,6 @@
 module.exports = {
   port : process.env.PORT || 3000,
-  db : process.env.MONGODB || 'mongodb://hzapata:Chichanga91@ds149743.mlab.com:49743/nassqua',
+  db : process.env.MONGODB || 'mongodb://localhost:27017/nassqua',
   SECRET_TOKEN : 'miclavedetokens'
 }
 
