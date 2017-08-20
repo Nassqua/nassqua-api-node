@@ -7,6 +7,10 @@ const service = require('../services')
 
 function signUp(req,res){
 
+  console.log('SigUp *************************');
+  console.log(req.body);
+
+
   if(!req.body.email ||!req.body.displayNames || !req.body.password)
     return res.status(404).send( { message : 'Invalid SignUp data' } )
 
@@ -17,7 +21,7 @@ function signUp(req,res){
   })
 
   user.save((err) => {
-    if(err) return res.status(500).send( { message : 'Error on user create' } )  
+    if(err) return res.status(500).send( { message : 'Error on user create' } )
     res.status(200).send( { token : service.createToken(user) } )
   })
 

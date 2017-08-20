@@ -7,7 +7,7 @@ const auth = require('../middlewares/auth')
 
 
 // Experiences
-api.get('/experiences' , auth ,   experienceController.getExperiences)
+api.get('/experiences' , experienceController.getExperiences)
 api.get('/experiences/:experienceid' ,  experienceController.getExperience)
 api.post('/experiences' , auth ,  experienceController.setExperience)
 api.put('/experiences/:experienceid' , experienceController.updateExperiences)
