@@ -17,7 +17,7 @@ api.post('/singup' , userController.signUp)
 api.post('/singin' , userController.signIn)
 
 
-api.get('/private', auth ,  function(req, res){
+api.get('/private', function(req, res){
   res.status(200).send( { message : 'Tienes acceso' } )
 })
 
