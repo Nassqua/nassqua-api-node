@@ -13,9 +13,10 @@ api.post('/experiences' , auth ,  experienceController.setExperience)
 api.put('/experiences/:experienceid' , experienceController.updateExperiences)
 api.delete('/experiences/:experienceid' , experienceController.deleteExperiences)
 
+// User Logg
 api.post('/singup' , userController.signUp)
 api.post('/singin' , userController.signIn)
-
+api.get('/getuserdata' , userController.getUserData)
 
 api.get('/private', function(req, res){
   res.status(200).send( { message : 'Tienes acceso' } )

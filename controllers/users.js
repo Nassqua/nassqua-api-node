@@ -62,7 +62,15 @@ function signIn(req,res){
   })
 }
 
+function getUserData(req,res){
+  res.status(200).send({
+    name : 'Heinner Zapata',
+    email : 'hzapata@gmail.com'
+  })
+}
+
 module.exports = {
   signUp,
-  signIn
+  signIn,
+  getUserData
 }
